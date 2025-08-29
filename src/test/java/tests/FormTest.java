@@ -4,8 +4,6 @@ import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -17,13 +15,6 @@ public class FormTest extends BaseTest {
 
         driver.get("https://www.techlistic.com/p/selenium-practice-form.html");
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-
-        try {
-            WebElement cookieBtn = wait.until(ExpectedConditions.elementToBeClickable(By.id("cookieChoiceDismiss")));
-            cookieBtn.click();
-        } catch (Exception ignored) {}
-
 
         driver.findElement(By.name("firstname")).sendKeys("Eray");
         driver.findElement(By.name("lastname")).sendKeys("Akpinar");
@@ -32,6 +23,7 @@ public class FormTest extends BaseTest {
         driver.findElement(By.id("datepicker")).sendKeys("28-08-2025");
         driver.findElement(By.id("profession-1")).click();
         driver.findElement(By.id("tool-2")).click();
+        takeScreenshot("SS-NUM1");
 
 
         WebElement continentsDropdown = driver.findElement(By.id("continents"));
@@ -39,7 +31,7 @@ public class FormTest extends BaseTest {
 
         WebElement commandsDropdown = driver.findElement(By.id("selenium_commands"));
         commandsDropdown.findElement(By.xpath("//option[. = 'Navigation Commands']")).click();
-
+        takeScreenshot("SS-NUM2");
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,700)");
@@ -49,5 +41,6 @@ public class FormTest extends BaseTest {
         uploadInput.sendKeys(filePath);
 
         driver.findElement(By.id("submit")).click();
+        takeScreenshot("SS-NUM3");
     }
 }

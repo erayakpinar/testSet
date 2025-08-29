@@ -18,6 +18,7 @@ public class LoginTest extends BaseTest {
 
         String alert = driver.findElement(By.id("flash")).getText();
         assertTrue(alert.contains("invalid"));
+        takeScreenshot("SS-invalidLogin");
 
 
     }
@@ -34,5 +35,6 @@ public class LoginTest extends BaseTest {
 
         String alert = driver.findElement(By.id("flash")).getText();
         assertTrue(alert.contains("secure"));
+        takeScreenshot("SS-validLogin");
     }
 }

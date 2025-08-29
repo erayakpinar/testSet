@@ -27,6 +27,8 @@ public class BaseTest {
         options.addArguments("--start-maximized");
         options.addArguments("--disable-notifications"); // site bildirimlerini kapat
         options.addArguments("--disable-popup-blocking"); // popup engelle
+        options.addArguments("--blink-settings=imagesEnabled=false"); // görsel reklamları da kapatır
+
 
         // Chrome şifre popup'larını devre dışı bırakmak için prefs
         Map<String, Object> prefs = new HashMap<>();
@@ -45,6 +47,7 @@ public class BaseTest {
     // Screenshot alma metodu
     public void takeScreenshot(String fileName) {
         try {
+            Thread.sleep(2000);
             TakesScreenshot ts = (TakesScreenshot) driver;
             File src = ts.getScreenshotAs(OutputType.FILE);
             File dest = new File("screenshots/" + fileName + ".png");
@@ -56,6 +59,8 @@ public class BaseTest {
             System.out.println("Screenshot alındı: " + dest.getAbsolutePath());
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 

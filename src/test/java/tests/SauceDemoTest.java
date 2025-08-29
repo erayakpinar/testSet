@@ -11,6 +11,7 @@ public class SauceDemoTest extends BaseTest {
         driver.findElement(By.id("user-name")).sendKeys("standard_user");
         driver.findElement(By.id("password")).sendKeys("secret_sauce");
         driver.findElement(By.id("login-button")).click();
+        takeScreenshot("SS-sDLogin");
     }
 
     void addToCart(){
@@ -20,6 +21,7 @@ public class SauceDemoTest extends BaseTest {
         driver.findElement(By.xpath("//div[normalize-space()='Sauce Labs Backpack']")).isDisplayed();
         driver.findElement(By.xpath("//div[normalize-space()='Sauce Labs Bike Light']")).isDisplayed();
         driver.findElement(By.id("checkout")).click();
+        takeScreenshot("SS-sDCart");
     }
 
     void checkout(){
@@ -28,6 +30,7 @@ public class SauceDemoTest extends BaseTest {
         driver.findElement(By.id("postal-code")).sendKeys("34000");
         driver.findElement(By.id("continue")).click();
         driver.findElement(By.xpath("//span[@class='title']")).isDisplayed();
+        takeScreenshot("SS-sDCheckout");
     }
 
     @Test
